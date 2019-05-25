@@ -1,8 +1,63 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 80vh;
+  width: 84vw;
+  border: 5px solid #58595b;
+  border-radius: 5px;
 }
 
-a {
-  color: #00B7FF;
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 7vw [col-start]);
+  grid-template-rows: repeat(8, 10vh [row-start]);
+  margin: 0;
+  width: 84vw;
+}
+
+header {
+  grid-column: 2/span 5;
+  grid-row: 3/span 2;
+  line-height: 36px;
+}
+
+#sign-up {
+  color: #4F0A29;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  margin: 0;
+}
+
+.title {
+  color: #4F0A29;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0;
+}
+
+button {
+  grid-column: 2/span 4;
+  grid-row: 5/span 1;
+  background-color: transparent;
+  border: 3px solid #4F0A29;
+  border-radius: 5px;
+  height: 10vh;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #4F0A29;
+  display: inline-flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+#wine {
+  grid-column: 7/span 4;
+  grid-row: 4/span 2;
+  height: 50vh;
+}
+
+#google {
+  height: 5vh;
+  padding: 0 1vh 0 0;
 }
