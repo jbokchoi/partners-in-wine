@@ -1,6 +1,6 @@
 body {
-    height: 90vh;
-    border: 5px solid #58595b;
+    height: auto;
+    border: 3px solid #58595b;
     border-radius: 5px;
   }
   
@@ -12,52 +12,73 @@ body {
     width: 90vw;
 }
 
-nav {
+#profile {
+    height: 20vh;
+    border-radius: 50%;
+}
+
+.profile {
     display: flex;
-    height: 12vh;
-    background-color: #4F0A29;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    padding: 2vmax;
+    align-items: baseline;
 }
 
-nav h1 {
-    color: #e8e5e5;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 24px;
-    margin: 0;    
-    letter-spacing: 1px;
-}
-
-#icon-wrap {
+#pic-name{
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
+
 }
 
-.icon {
-    height: 3vh;
-    padding: 0 1vw 0 0;
+#pic-name > h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 3vmax;
+    color: #4F0A29;
 }
 
-a {
-    color: #e8e5e5;
+#update {
+    display: flex;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
-    font-size: 14px; 
-    text-decoration: none;
-    padding: 0 0 0 1vw;
+    font-size: 3vmax;
+    align-items: baseline;
 }
 
-#show {
-    height: 3vh;
+.fa-edit {
+    color: #4F0A29;
 }
 
-button {
-    background-color: transparent;
-    border: none;
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+        "friends friends"
+        "latest my-wines";
 }
 
-.fa-trash-alt {
-    color: #58595b;
-    font-size: 15px;
+.dashboard > div > p {
+    margin: 1vmax;
+    color: #4F0A29;
+    font-family: 'Raleway', sans-serif;
+}
+
+.friends, .added-wines, .my-wine-lists {
+    border: 3px solid  #4F0A29;
+    margin: 1vmax;
+    border-radius: 5px;
+}
+
+.friends {
+    grid-area: friends;
+    height: 15vh;
+}
+
+.added-wines {
+    grid-area: latest;
+}
+
+.my-wine-lists {
+    grid-area: my-wines;
 }

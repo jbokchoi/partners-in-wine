@@ -7,6 +7,7 @@ var partnerSchema = new Schema({
     email: String,
     avatar: String,
     googleId: String,
+    currentDrink: String,
     wineLists: [{type: Schema.Types.ObjectId, ref: 'WineList'}] 
 }, {
     timestamps: true

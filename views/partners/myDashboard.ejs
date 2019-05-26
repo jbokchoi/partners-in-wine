@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Partners in Wine</title>
-    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Raleway:400,600,800&display=swap" rel="stylesheet">
-  </head>
+    <%- include('../partials/head') %>
   <body>
     <%- include('../partials/nav') %>
-    <h1>Partners in Wine</h1>
-    <p>Welcome to Partners in Wine</p>
-    <p><%= partner.name %></p>
+    <section class="profile">
+      <div id="pic-name">
+        <img id="profile" src="<%= partner.avatar %>" alt="User Profile">
+        <h1><%= partner.name %></h1>
+      </div>
+      <div id="update">
+        <p>I'm currently drinking... <%= partner.currentDrink %></p>
+      <form action="/partners/show" class="add-drink" method="GET">
+          <button type="submit"><i class="far fa-edit"></i>Add/Edit</button>
+      </form>     
+      </div>
+    </section>
+    <section class="dashboard">
+      <div class="friends"> <p>my partners in wine</p> </div>
+      <div class="added-wines"> <p>newest wines in the wine catalogue</p> </div>
+      <div class="my-wine-lists"> <p>my wine lists</p> </div>
+    </section>
   </body>
 </html>

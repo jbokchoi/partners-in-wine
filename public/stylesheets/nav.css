@@ -1,0 +1,50 @@
+nav {
+    display: flex;
+    height: 12vh;
+    background-color: #4F0A29;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vmax;
+}
+
+nav h1 {
+    color: #e8e5e5;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3vmax;
+    margin: 0;    
+    letter-spacing: 1px;
+}
+
+#icon-wrap {
+    display: flex;
+    align-items: flex-end;
+}
+
+.icon {
+    height: 3vh;
+    padding: 0 1vw 0 0;
+}
+
+a {
+    color: #e8e5e5;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 14px; 
+    text-decoration: none;
+    padding: 0 0 0 1vw;
+}
+
+#show {
+    height: 3vh;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+.fa-trash-alt {
+    color: #58595b;
+    font-size: 15px;
+}

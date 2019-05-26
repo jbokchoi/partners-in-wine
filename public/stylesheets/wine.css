@@ -1,0 +1,92 @@
+body {
+    height: auto;
+    border: 3px solid #58595b;
+    border-radius: 5px;
+}
+
+#wine-cat-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wine-header {
+    line-height: 3vmax;
+    text-align: center;
+    margin: 3vmax;
+}
+
+.wine-header > h1 {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    color: #58595b;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+#cat-table {
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 1rem;
+    width: 95%;
+    font-size: 1.5vmax;
+    letter-spacing: 1px;
+}
+
+thead {
+    background-color: #4F0A29;
+    color: #e8e5e5;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;;
+}
+
+tbody{
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;;
+}
+
+td {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color:#e8e5e5;
+}
+
+.new-wine, .add {
+    background-color: #4F0A29;
+    color: #e8e5e5;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    height: 3vmax;
+    width: 15vmax;
+    border-radius: 5px;
+    margin: 3vmax;
+}
+
+#add-wine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #58595b;
+    border: 1px solid #4F0A29;
+    margin: 0 2vmax 2vmax 2vmax;
+}
+
+label {
+    margin: 1vmax;
+    display: flex;
+}
+
+input, section {
+    padding: 0 3px 0 0;
+}

@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Partners in Wine</title>
-    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Raleway:400,600,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-</head>
+    <%- include('../partials/head') %>
   <body>
     <%- include('../partials/nav') %>
-    <header>
+    <section id="wine-cat-show">
+    <header class="wine-header">
     <h1>Partners in Wine's</h1>
     <h1>Wine Catalogue</h1>
     </header>
-    <div style="overflow-y: auto">
+    <div id="cat-table" style="overflow-y: auto">
         <table>
             <thead>
                 <tr>
-                    <th>wine name</th>
-                    <th>color</th>
-                    <th>type</th>
-                    <th>country</th>
+                    <td>wine name</td>
+                    <td>color</td>
+                    <td>type</td>
+                    <td colspan="3">country</td>
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +40,31 @@
             </tbody>
         </table>
     </div>
-    <button class="new-wine" onclick="location.href='/wines/new'"> Add New Wine </button>
-  </body>
+   
+    <header class="wine-header">
+            <h1>Add a new wine</h1>
+    </header>
+
+        <form id="add-wine" action="/wines" method="POST">
+            <label id="wine-name"> Wine Name:
+                <input type="text" name="name">
+            </label>
+            <label id="color"> Color:
+                <select name="color">
+                    <option value="Red">Red</option>
+                    <option value="White">White</option>
+                    <option value="Rose">Rose</option>
+                </select>
+            </label>
+            <label id="type"> Type:
+                <input type="text" name="type">
+            </label>
+            <label id="country"> Country:
+                <input type="text" name="country">
+            </label>
+            <input class="add" type="submit" value="Add Wine">
+        </form>    
+
+</section>  
+</body>
 </html>
