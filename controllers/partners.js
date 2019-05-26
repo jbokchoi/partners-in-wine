@@ -5,5 +5,6 @@ module.exports = {
 };
 
 function index (req, res, next) {
-    res.render('partners/myDashboard')
-}
+    res.render('partners/myDashboard', 
+    { partner : req.user} 
+)}

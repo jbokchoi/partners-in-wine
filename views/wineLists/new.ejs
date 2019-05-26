@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Partners in Wine</title>
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Raleway:400,600,800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <header>
+    <h1>Create a new wine list</h1>
+    </header>
+
+    <form action="/wineLists" method="POST">
+        <label id="winelist-name"> Wine List Name:
+            <input type="text" name="name">
+        </label>
+        <label>Description:
+        <textarea name="content"></textarea>
+        </label>
+        <label id="wine"> Add Wine:
+            <select name="wines">
+                <% wines.forEach(function(wine) { %>
+                <option value="wines"><%= wine.name %></option>
+                <% }) %>
+            </select>
+            <select name="wines">
+                <% wines.forEach(function(wine) { %>  
+                <option value="wines"><%= wine.name %></option>
+                <% }) %>
+            </select>
+            <select name="wines">
+                <% wines.forEach(function(wine) { %> 
+                <option value="wines"><%= wine.name %></option>
+                <% }) %>
+            </select>        
+        </label>
+        <input class="add" type="submit" value="Create Wine List">
+    </form>
+    
+  </body>
+</html>
