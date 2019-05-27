@@ -62,7 +62,7 @@ tr:nth-child(even) {
     background-color:#e8e5e5;
 }
 
-.new-wine, .add {
+.new-wine, .add, .new-winelist {
     background-color: #4F0A29;
     color: #e8e5e5;
     font-family: 'Raleway', sans-serif;

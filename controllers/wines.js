@@ -29,12 +29,11 @@ function show(req, res, next) {
 };
 
 function create(req, res, next) {
-    var wine = new Wine(req.body);
-    console.log(req.user)
-    wine.save(function (err) {
+    var wine = new Wine(req.body);    
+        wine.save(function (err) {
         err ?
             res.render('wines/new') : res.redirect('wines/index');
-    })
+    });
 }
 
 function newWine(req, res, next) {

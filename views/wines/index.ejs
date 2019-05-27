@@ -13,7 +13,8 @@
             <thead>
                 <tr>
                     <td>wine name</td>
-                    <td>color</td>
+                    <td>style</td>
+                    <td>sweetness</td>
                     <td>type</td>
                     <td colspan="3">country</td>
                 </tr>
@@ -22,7 +23,8 @@
                 <% wines.forEach(function(wine) {%>
                 <tr> 
                     <td><%= wine.name %></td>
-                    <td><%= wine.color %></td>
+                    <td><%= wine.style %></td>
+                    <td><%= wine.sweetness %></td>
                     <td><%= wine.type %></td>
                     <td><%= wine.country %></td>
                     <td>
@@ -49,11 +51,20 @@
             <label id="wine-name"> Wine Name:
                 <input type="text" name="name">
             </label>
-            <label id="color"> Color:
-                <select name="color">
+            <label id="style"> Style:
+                <select name="style">
                     <option value="Red">Red</option>
                     <option value="White">White</option>
                     <option value="Rose">Rose</option>
+                    <option value="Sparkling">Sparkling</option>
+                    <option value="Dessert">Dessert</option>
+                </select>
+            </label>
+            <label id="sweetness"> Sweetness:
+                <select name="sweetness">
+                    <option value="Dry">Dry</option>
+                    <option value="Semi-Sweet">Semi-Sweet</option>
+                    <option value="Sweet">Sweet</option>
                 </select>
             </label>
             <label id="type"> Type:

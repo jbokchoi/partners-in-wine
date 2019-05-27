@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var wineListsController = require('../controllers/wineLists');
 
-router.get('/index', wineListsController.index);
+router.get('/index', isLoggedIn, wineListsController.index);
 router.get('/new', isLoggedIn, wineListsController.new);
 router.post('/', isLoggedIn, wineListsController.create);
 

@@ -16,8 +16,12 @@
                         <td><%= wine.name %></td>
                     </tr>
                     <tr>
-                        <th>Color:</th>
-                        <td><%= wine.color %></td>
+                        <th>Style:</th>
+                        <td><%= wine.style %></td>
+                    </tr>
+                    <tr>
+                        <th>Sweetness:</th>
+                        <td><%= wine.sweetness %></td>
                     </tr>
                     <tr>
                         <th>Type:</th>
@@ -34,5 +38,50 @@
                 </table>
     </div>
     <button class="edit-wine" onclick="location.href='/wines/edit'"> Edit this wine </button>
-  </body>
+    
+    <% if (wine.reviews.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Review</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% var total = 0 %>
+          <% wine.reviews.forEach(function(review) { %>
+            <% total += review.rating %>
+            <tr>
+              <td><%= review.createdAt.toLocaleDateString() %></td>
+              <td><%= review.content %></td>
+              <td><%= review.rating %></td>
+            </tr>
+            <% }); %>
+            <tr>
+              <td colspan="2"></td>
+              <td><strong><%= (total / wine.reviews.length).toFixed(1) %></strong></td>
+            </tr>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h5>No Reviews Yet</h5>
+    <% } %>    
+    
+    <h2>Reviews</h2>
+    <form id="add-review-form" method="POST"
+      action="/wines/<%= wine._id %>/reviews">
+      <label>Review:</label>
+      <textarea name="content"></textarea>
+      <label>Rating:</label>
+      <select name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input type="submit" value="Add Review">
+    </form>
+</body>
 </html>
