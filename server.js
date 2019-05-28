@@ -18,7 +18,7 @@ var indexRouter = require('./routes/index');
 var partnersRouter = require('./routes/partners');
 var winesRouter = require('./routes/wines');
 var wineListsRouter = require('./routes/wineLists');
-
+var reviewsRouter = require('./routes/reviews');
 
 
 
@@ -46,6 +46,7 @@ app.use('/', indexRouter);
 app.use('/partners', partnersRouter);
 app.use('/wines', winesRouter);
 app.use('/wineLists', wineListsRouter);
+app.use('/', reviewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

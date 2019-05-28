@@ -49,7 +49,7 @@
 
         <form id="add-wine" action="/wines" method="POST">
             <label id="wine-name"> Wine Name:</label>
-                <input type="text" name="name">
+                <input type="text" name="name" autocomplete="off">
                 
             <label id="style"> Style: </label>
                 <select name="style">
@@ -68,10 +68,10 @@
                 </select>
             
             <label id="type"> Type: </label>
-                <input type="text" name="type">
+                <input type="text" name="type" autocomplete="off">
             
             <label id="country"> Country: </label>
-                <input type="text" name="country">
+                <input type="text" name="country" autocomplete="off">
             
             <input class="add" type="submit" value="Add Wine">
         </form>    

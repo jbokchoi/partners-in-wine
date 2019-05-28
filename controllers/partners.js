@@ -21,6 +21,16 @@ function getAllPartners(req, res, next) {
 }
 
 function index (req, res, next) {
-    res.render('partners/myDashboard', 
-    { partner : req.user} 
-)}
+    if (req.user) {
+        Partner.find({}).exec(function(err, partners) {
+            Partner.findById(req.user._id).exec(function(err, loggedInPartner) {
+                res.render('partners/myDashboard', 
+                { partner: req.user, partners, loggedInPartner }); 
+            });
+        });
+    } else {
+        Partner.find({}).exec(function(err, partners) {
+            res.render('partners/dashboard', {partners, loggedInPartner: null });
+        });
+    } 
+}

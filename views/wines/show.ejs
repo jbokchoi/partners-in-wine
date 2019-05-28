@@ -3,10 +3,8 @@
     <%- include('../partials/head') %>
   <body>
     <%- include('../partials/nav') %>
-    <header>
-    <h1><%= wine.name %></h1>
-    </header>
-    <div>
+    <section id="wine-cat-show">
+    <div id="show-wine-details">
             <table id="show-wine">
                     <tr>
                         <th id="header" colspan="2"><%= wine.name %> Details</th>
@@ -33,11 +31,11 @@
                     </tr>
                     <tr>
                         <th>Wine added by:</th>
-                        <td><%= wine.addedBy %></td>
+                        <td><%= wine.addedBy.name  %></td>
                     </tr>
                 </table>
     </div>
-    <button class="edit-wine" onclick="location.href='/wines/edit'"> Edit this wine </button>
+    <button class="edit-wine" onclick="location.href='/wines/<%= wine._id %>/edit'"> Edit this wine </button>
     
     <% if (wine.reviews.length) { %>
       <table>
@@ -83,6 +81,7 @@
       </select>
       <input type="submit" value="Add Review">
     </form>
+  </section>
     <%- include('../partials/footer') %>
 </body>
 </html>

@@ -3,7 +3,34 @@
     <%- include('../partials/head') %>
     <body>
         <%- include('../partials/nav') %>
-        <h1>hello</h1>
+        <form action="/wines/<%= wine._id %>?_method=PUT" method="POST">
+            <label id="wine-name"> Wine Name:</label>
+            <input type="text" name="name" value="<%= wine.name %>" autocomplete="off">
+            
+        <label id="style"> Style: </label>
+            <select name="style" value="<%= wine.style %>">
+                <option value="Red">Red</option>
+                <option value="White">White</option>
+                <option value="Rose">Rose</option>
+                <option value="Sparkling">Sparkling</option>
+                <option value="Dessert">Dessert</option>
+            </select>
+        
+        <label id="sweetness"> Sweetness: </label>
+            <select name="sweetness" value="<%= wine.sweetness %>">
+                <option value="Dry">Dry</option>
+                <option value="Semi-Sweet">Semi-Sweet</option>
+                <option value="Sweet">Sweet</option>
+            </select>
+        
+        <label id="type"> Type: </label>
+            <input type="text" name="type" value="<%= wine.type %>" autocomplete="off">
+        
+        <label id="country"> Country: </label>
+            <input type="text" name="country" value="<%= wine.country %>" autocomplete="off">
+        
+        <input class="add" type="submit" value="Update Wine">
+        </form>
         <%- include('../partials/footer') %>
 </body>
 </html>

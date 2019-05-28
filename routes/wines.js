@@ -7,6 +7,7 @@ router.get('/index', winesController.index);
 router.get('/new', isLoggedIn, winesController.new);
 router.get('/:id', winesController.show);
 router.get('/:id/edit', isLoggedIn, winesController.edit);
+router.put('/:id', isLoggedIn, winesController.update);
 router.post('/', isLoggedIn, winesController.create);
 router.delete('/:id', isLoggedIn, winesController.delete);
 

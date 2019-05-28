@@ -18,6 +18,10 @@ body {
     align-items: center;
 }
 
+#show-wine-details {
+    margin: 3vmax;
+}
+
 .wine-header {
     line-height: 3vmax;
     text-align: center;
