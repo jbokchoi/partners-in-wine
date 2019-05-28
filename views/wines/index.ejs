@@ -48,10 +48,10 @@
     </header>
 
         <form id="add-wine" action="/wines" method="POST">
-            <label id="wine-name"> Wine Name:
+            <label id="wine-name"> Wine Name:</label>
                 <input type="text" name="name">
-            </label>
-            <label id="style"> Style:
+                
+            <label id="style"> Style: </label>
                 <select name="style">
                     <option value="Red">Red</option>
                     <option value="White">White</option>
@@ -59,23 +59,23 @@
                     <option value="Sparkling">Sparkling</option>
                     <option value="Dessert">Dessert</option>
                 </select>
-            </label>
-            <label id="sweetness"> Sweetness:
+            
+            <label id="sweetness"> Sweetness: </label>
                 <select name="sweetness">
                     <option value="Dry">Dry</option>
                     <option value="Semi-Sweet">Semi-Sweet</option>
                     <option value="Sweet">Sweet</option>
                 </select>
-            </label>
-            <label id="type"> Type:
+            
+            <label id="type"> Type: </label>
                 <input type="text" name="type">
-            </label>
-            <label id="country"> Country:
+            
+            <label id="country"> Country: </label>
                 <input type="text" name="country">
-            </label>
+            
             <input class="add" type="submit" value="Add Wine">
         </form>    
-
 </section>  
+<%- include('../partials/footer') %>
 </body>
 </html>

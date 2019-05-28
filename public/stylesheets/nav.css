@@ -7,18 +7,19 @@ nav {
     padding: 1vmax;
 }
 
-nav h1 {
+#nav-title {
     color: #e8e5e5;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 3vmax;
+    font-size: calc(24px + 1vw);
     margin: 0;    
     letter-spacing: 1px;
+    text-decoration: none;
 }
 
 #icon-wrap {
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
 }
 
 .icon {
@@ -26,11 +27,11 @@ nav h1 {
     padding: 0 1vw 0 0;
 }
 
-a {
+.nav {
     color: #e8e5e5;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
-    font-size: 14px; 
+    font-size: calc(8px + 1vw);
     text-decoration: none;
     padding: 0 0 0 1vw;
 }
@@ -47,4 +48,18 @@ button {
 .fa-trash-alt {
     color: #58595b;
     font-size: 15px;
+}
+
+footer {
+    background-color: #58595b;
+    color: #e8e5e5;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: calc(8px + 1vw);
+    text-decoration: none;
+    text-align: center;
+    height: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

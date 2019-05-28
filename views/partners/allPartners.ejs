@@ -22,7 +22,7 @@
                     <div class="card-content">
                       <div>
                         <span class="card-title">
-                          <% if (partner.avatar) { %><img src='<%= partner.avatar %>'>
+                          <% if (partner.avatar) { %><img class= "profile" src='<%= partner.avatar %>'>
                           <% } else { %> <i class="small material-icons">perm_identity</i> <% } %>
                           <span class="partner-name"><%= partner.name %></span>
                         </span>
@@ -32,5 +32,6 @@
                 <% }) %>
               </div>
             </div>
+            <%- include('../partials/footer') %>
     </body> 
 </html>

@@ -3,16 +3,16 @@
     <%- include('../partials/head') %>
   <body>
     <%- include('../partials/nav') %>
-    <section class="profile">
+    <section id="profile">
       <div id="pic-name">
-        <img id="profile" src="<%= partner.avatar %>" alt="User Profile">
+        <img class="profile" src="<%= partner.avatar %>" alt="User Profile">
         <h1><%= partner.name %></h1>
       </div>
       <div id="update">
         <p>I'm currently drinking... <%= partner.currentDrink %></p>
-      <form action="/partners/show" class="add-drink" method="GET">
-          <button type="submit"><i class="far fa-edit"></i>Add/Edit</button>
-      </form>     
+        <form action="/partners/show" class="add-drink" method="GET">
+        <button type="submit"><i class="far fa-edit"></i>Add/Edit</button>
+        </form>     
       </div>
     </section>
     <section class="dashboard">
@@ -20,5 +20,6 @@
       <div class="added-wines"> <p>newest wines in the wine catalogue</p> </div>
       <div class="my-wine-lists"> <p>my wine lists</p> </div>
     </section>
+    <%- include('../partials/footer') %>
   </body>
 </html>
