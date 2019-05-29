@@ -44,6 +44,7 @@
             <th>Date</th>
             <th>Review</th>
             <th>Rating</th>
+            <th>Reviewed By</th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +55,7 @@
               <td><%= review.createdAt.toLocaleDateString() %></td>
               <td><%= review.content %></td>
               <td><%= review.rating %></td>
+              <td><%= review.reviewedBy.name %></td>
             </tr>
             <% }); %>
             <tr>
@@ -79,6 +81,7 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+      <input type="hidden" value="<%= partner.id  %>" name="reviewedBy">
       <input type="submit" value="Add Review">
     </form>
   </section>

@@ -1,40 +1,67 @@
 var WineList = require('../models/wineList');
 var Wine = require('../models/wine');
+var Partner = require('../models/partner');
 
 module.exports = {
     index,
     new: newWineList,
     create,
+    show,
+    addWinesToList,
+    delete: deleteWineList
 };
+
+function deleteWineList(req, res, next) {
+    WineList.findByIdAndDelete(req.params.id, function (err) {
+        res.redirect('/wineLists/index');
+    })
+}
+
+function addWinesToList(req, res, next) {
+    WineList.findById(req.params.id, function (err, wineList) {
+        wineList.wines.push(req.body.wineId);
+        wineList.save(function (err) {
+            res.redirect(`/wineLists/${wineList._id}`);
+        });
+    });
+}
+
+function show(req, res, next) {
+    WineList.findById(req.params.id)
+        .populate('wines').exec(function (err, wineList) {
+            Wine.find({ _id: { $nin: wineList.wines } })
+                .exec(function (err, wines) {
+                    res.render('wineLists/show', { wineList, wines, partner: req.user });
+                });
+        });
+}
 
 function create(req, res, next) {
     var wineList = new WineList(req.body);
-        // var listOfWines = req.body.wines;
-        // var wines = {};
-        //     for (var i = 0; i < listOfWines.length; i++) {
-        // var wine = [];
-        // wine.push(listOfWines);
-        // wines[i] = wine;
-        // }
-        // wineList.name = req.body.name;
-        // wineList.description = req.body.description;
-        // wineList.wines = wines;
-        // wineList.createdBy = req.user.name;
-
-        wineList.save(function (err) {
-            err ?
-                res.render('wineLists/new') : res.redirect('wineLists/index', {wine});
+    wineList.save(function (err) {
+        Partner.find({}).exec(function (err) {
+            Partner.findById(req.user._id).exec(function (err) {
+                wineList.createdBy = req.user;
+                wineList.save(function (err) {
+                    res.redirect('/wineLists/index')
+                });
+            });
+        });
     });
 }
 
+
+
 function newWineList(req, res, next) {
-    Wine.find({}, function(err, wine) {
+    WineList.find({}, function (err, wine) {
         res.render('wineLists/new', { wine });
     });
 }
- 
-function index (req, res, next) {
-    Wine.find({}, function(err, wines) {
-    res.render('wineLists/index', { wines, partner: req.user })
+
+function index(req, res, next) {
+    WineList.find({}, function (err, wineList) {
+        Wine.find({}, function (err, wines) {
+            res.render('wineLists/index', { partner: req.user, wineList, wines })
+        });
     });
 }

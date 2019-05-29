@@ -34,16 +34,16 @@ function deleteWine(req, res, next) {
 
 function show(req, res, next) {
     Wine.findById(req.params.id)
-    .populate('addedBy').exec(function(err, wine) {
-        res.render('wines/show', { wine });
-    });
-};
+    .populate('addedBy')
+    .populate('reviews.reviewedBy')
+    .exec(function(err, wine) {
+            res.render('wines/show', { wine, partner: req.user });
+        });
+}
 
 function create(req, res, next) {
     var wine = new Wine(req.body);    
     wine.save(function (err) {
-        err ?
-            res.render('wines/new') : 
             Partner.find({}).exec(function(err) {
                 Partner.findById(req.user._id).exec(function(err) {
                     wine.addedBy = req.user;

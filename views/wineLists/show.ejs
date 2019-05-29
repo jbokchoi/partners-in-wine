@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/head') %>
+
+<body>
+  <%- include('../partials/nav') %>
+  <section id="wine-cat-show">
+    <header class="wine-header">
+      <h1> my wine list</h1>
+    </header>
+
+    <table id="show-wine-list">
+            <tr>
+                <th id="header" colspan="2">Wine List: <%= wineList.name %></th>
+            </tr>
+            <tr>
+                <th>About the <%= wineList.name %>:</th>
+                <td><%= wineList.description %></td>
+            </tr>
+            <tr>
+                <th>Wines:</th>
+                <td><%= wineList.wines.name %></td>
+            </tr>
+    </table>        
+
+
+    <form id="add-wine-to-list" action="/wineLists/<%= wineList._id%>/wines" method="POST">
+        <select name="wineId">
+          <%- wines.map(wine => `<option value="${wine._id}">${wine.name}</option>`).join('') %>
+        </select>
+        <button type="submit">Add to Wine List</button>
+      </form>
+
+
+</section>
+<%- include('../partials/footer') %>
+</body>
+
+</html>

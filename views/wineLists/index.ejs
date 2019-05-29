@@ -6,11 +6,41 @@
   <%- include('../partials/nav') %>
   <section id="wine-cat-show">
     <header class="wine-header">
-      <img id="profile" src="<%= partner.avatar %>">
+      <img class="profile" src="<%= partner.avatar %>">
       <h1> my wine lists</h1>
     </header>
-    <p>my wine lists</p>
-    <button class="new-winelist" onclick="location.href='/wineLists/new'"> Create new wine list </button>
+
+    <form id="create-wineList" action="/wineLists" method="POST">
+      <label id="winelist-name"> Wine List Name: </label>
+        <input type="text" name="name">
+      
+      <label>Description: </label>
+        <textarea name="description"></textarea>
+      
+      <input class="add" type="submit" value="Create Wine List">
+  </form>    
+
+  <table id="show-wine-list">
+    <% wineList.forEach(function(wineList) { %>
+    <tr>
+        <th>Wine List:</th>
+        <td><%= wineList.name %></td>
+        <th>Created:</th>
+        <td><%= wineList.createdAt.toLocaleDateString() %></td>
+        <td>
+          <form action="/wineLists/<%= wineList._id %>" class="show-wine-list" method="GET">
+          <button type="submit"><img id="show" src="../images/show.png"></button>
+          </form>
+        </td>
+        <td>
+          <form action="/wineLists/<%= wineList._id %>?_method=DELETE" class="delete-wine-list" method="POST">
+            <button type="submit"><i class="fas fa-trash-alt"></i></button>
+          </form>               
+        </td>
+    </tr>
+    <% }); %>
+  </table>
+
   </section>
   <%- include('../partials/footer') %>
 </body>
