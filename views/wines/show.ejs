@@ -56,6 +56,9 @@
               <td><%= review.content %></td>
               <td><%= review.rating %></td>
               <td><%= review.reviewedBy.name %></td>
+              <td><form action="/<%= wine._id %>/<%= review._id %>?_method=DELETE" class="delete-review"
+                method="POST">
+                <button type="submit">X</button></form></td>
             </tr>
             <% }); %>
             <tr>

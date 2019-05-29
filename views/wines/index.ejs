@@ -12,11 +12,21 @@
         <table>
             <thead>
                 <tr>
-                    <td>wine name</td>
-                    <td>style</td>
-                    <td>sweetness</td>
-                    <td>type</td>
-                    <td colspan="3">country</td>
+                    <td>wine name <a href="/wines/index?sortBy=name&sortDir=1"><i
+                        class="far fa-caret-square-up"></i></a>
+                        <a href="/wines/index?sortBy=name&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
+                    <td>style <a href="/wines/index?sortBy=style&sortDir=1"><i
+                        class="far fa-caret-square-up"></i></a>
+                        <a href="/wines/index?sortBy=style&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
+                    <td>sweetness <a href="/wines/index?sortBy=sweetness&sortDir=1"><i
+                        class="far fa-caret-square-up"></i></a>
+                        <a href="/wines/index?sortBy=sweetness&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
+                    <td>type<a href="/wines/index?sortBy=type&sortDir=1"><i
+                        class="far fa-caret-square-up"></i></a>
+                        <a href="/wines/index?sortBy=type&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
+                    <td colspan="3">country <a href="/wines/index?sortBy=country&sortDir=1"><i
+                        class="far fa-caret-square-up"></i></a>
+                        <a href="/wines/index?sortBy=country&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +45,7 @@
                     <td>
                         <form action="/wines/<%= wine._id %>?_method=DELETE" class="delete-wine" method="POST">
                             <button type="submit"><i class="fas fa-trash-alt"></i></button>
-                        </form>                        
+                        </form>               
                     </td>
                 </tr>
                 <% }) %>

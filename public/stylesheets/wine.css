@@ -108,3 +108,7 @@ input, section {
 select {
     background-color: transparent;
 }
+
+.fa-caret-square-down, .fa-caret-square-up {
+    color: #e8e5e5;
+}
