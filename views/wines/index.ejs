@@ -1,91 +1,104 @@
 <!DOCTYPE html>
 <html>
-    <%- include('../partials/head') %>
-  <body>
+<%- include('../partials/head') %>
+
+<body>
     <%- include('../partials/nav') %>
     <section id="wine-cat-show">
-    <header class="wine-header">
-    <h1>Partners in Wine's</h1>
-    <h1>Wine Catalogue</h1>
-    </header>
-    <div id="cat-table" style="overflow-y: auto">
-        <table>
-            <thead>
-                <tr>
-                    <td>wine name <a href="/wines/index?sortBy=name&sortDir=1"><i
-                        class="far fa-caret-square-up"></i></a>
-                        <a href="/wines/index?sortBy=name&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
-                    <td>style <a href="/wines/index?sortBy=style&sortDir=1"><i
-                        class="far fa-caret-square-up"></i></a>
-                        <a href="/wines/index?sortBy=style&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
-                    <td>sweetness <a href="/wines/index?sortBy=sweetness&sortDir=1"><i
-                        class="far fa-caret-square-up"></i></a>
-                        <a href="/wines/index?sortBy=sweetness&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
-                    <td>type<a href="/wines/index?sortBy=type&sortDir=1"><i
-                        class="far fa-caret-square-up"></i></a>
-                        <a href="/wines/index?sortBy=type&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
-                    <td colspan="3">country <a href="/wines/index?sortBy=country&sortDir=1"><i
-                        class="far fa-caret-square-up"></i></a>
-                        <a href="/wines/index?sortBy=country&sortDir=-1"> <i class="far fa-caret-square-down"></i></a></td>
-                </tr>
-            </thead>
-            <tbody>
-                <% wines.forEach(function(wine) {%>
-                <tr> 
-                    <td><%= wine.name %></td>
-                    <td><%= wine.style %></td>
-                    <td><%= wine.sweetness %></td>
-                    <td><%= wine.type %></td>
-                    <td><%= wine.country %></td>
-                    <td>
-                        <form action="/wines/<%= wine._id %>" class="show-wine" method="GET">
-                            <button type="submit"><img id="show" src="../images/show.png"></button>
-                        </form>     
-                    </td>
-                    <td>
-                        <form action="/wines/<%= wine._id %>?_method=DELETE" class="delete-wine" method="POST">
-                            <button type="submit"><i class="fas fa-trash-alt"></i></button>
-                        </form>               
-                    </td>
-                </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    </div>
-   
-    <header class="wine-header">
-            <h1>Add a new wine</h1>
-    </header>
+        <header class="wine-header">
+            <h1>Wine Catalogue</h1>
+        </header>
+        <div id="cat-table">
+            <table id="wine-catalogue">
+                <thead>
+                    <tr>
+                        <td>wine name <a href="/wines/index?sortBy=name&sortDir=1"><i
+                                    class="far fa-caret-square-up"></i></a>
+                            <a href="/wines/index?sortBy=name&sortDir=-1"> <i class="far fa-caret-square-down"></i></a>
+                        </td>
+                        <td>style <a href="/wines/index?sortBy=style&sortDir=1"><i
+                                    class="far fa-caret-square-up"></i></a>
+                            <a href="/wines/index?sortBy=style&sortDir=-1"> <i class="far fa-caret-square-down"></i></a>
+                        </td>
+                        <td>sweetness <a href="/wines/index?sortBy=sweetness&sortDir=1"><i
+                                    class="far fa-caret-square-up"></i></a>
+                            <a href="/wines/index?sortBy=sweetness&sortDir=-1"> <i
+                                    class="far fa-caret-square-down"></i></a></td>
+                        <td>type<a href="/wines/index?sortBy=type&sortDir=1"><i class="far fa-caret-square-up"></i></a>
+                            <a href="/wines/index?sortBy=type&sortDir=-1"> <i class="far fa-caret-square-down"></i></a>
+                        </td>
+                        <td colspan="3">country <a href="/wines/index?sortBy=country&sortDir=1"><i
+                                    class="far fa-caret-square-up"></i></a>
+                            <a href="/wines/index?sortBy=country&sortDir=-1"> <i
+                                    class="far fa-caret-square-down"></i></a></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% wines.forEach(function(wine) {%>
+                    <tr>
+                        <td><%= wine.name %></td>
+                        <td><%= wine.style %></td>
+                        <td><%= wine.sweetness %></td>
+                        <td><%= wine.type %></td>
+                        <td><%= wine.country %></td>
+                        <td>
+                            <form action="/wines/<%= wine._id %>" class="show-wine" method="GET">
+                                <button type="submit"><img id="show" src="../images/show.png"></button>
+                            </form>
+                        </td>
+                        <td>
 
-        <form id="add-wine" action="/wines" method="POST">
-            <label id="wine-name"> Wine Name:</label>
-                <input type="text" name="name" autocomplete="off">
+                            <% if (wine.addedBy == partner.id) { %>
+                            <form action="/wines/<%= wine._id %>?_method=DELETE" class="delete-wine" method="POST">
+                                <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                            <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+<br>
+        <h3>Add a new wine</h3>
+        <div id="add-wine-wrapper">
                 
-            <label id="style"> Style: </label>
-                <select name="style">
-                    <option value="Red">Red</option>
-                    <option value="White">White</option>
-                    <option value="Rose">Rose</option>
-                    <option value="Sparkling">Sparkling</option>
-                    <option value="Dessert">Dessert</option>
-                </select>
-            
-            <label id="sweetness"> Sweetness: </label>
-                <select name="sweetness">
-                    <option value="Dry">Dry</option>
-                    <option value="Semi-Sweet">Semi-Sweet</option>
-                    <option value="Sweet">Sweet</option>
-                </select>
-            
-            <label id="type"> Type: </label>
-                <input type="text" name="type" autocomplete="off">
-            
-            <label id="country"> Country: </label>
-                <input type="text" name="country" autocomplete="off">
-            
-            <input class="add" type="submit" value="Add Wine">
-        </form>    
-</section>  
-<%- include('../partials/footer') %>
+            <form id="add-wine" action="/wines" method="POST">
+                <label> Wine Name:
+                    <input type="text" name="name" autocomplete="off">
+                </label>
+
+                <label> Style:
+                    <select name="style">
+                        <option value="Red">Red</option>
+                        <option value="White">White</option>
+                        <option value="Rose">Rose</option>
+                        <option value="Sparkling">Sparkling</option>
+                        <option value="Dessert">Dessert</option>
+                    </select>
+                </label>
+
+                <label> Sweetness:
+                    <select name="sweetness">
+                        <option value="Dry">Dry</option>
+                        <option value="Semi-Sweet">Semi-Sweet</option>
+                        <option value="Sweet">Sweet</option>
+                    </select>
+                </label>
+
+                <label> Type:
+                    <input type="text" name="type" autocomplete="off">
+                </label>
+
+                <label> Country:
+                    <input type="text" name="country" autocomplete="off">
+                </label>
+
+                <input id="add-the-wine" class="add" type="submit" value="Add Wine">
+            </form>
+        </div>
+    </section>
+    <%- include('../partials/footer') %>
 </body>
+
 </html>

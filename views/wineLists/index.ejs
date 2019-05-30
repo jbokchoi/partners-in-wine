@@ -6,8 +6,7 @@
   <%- include('../partials/nav') %>
   <section id="wine-cat-show">
     <header class="wine-header">
-      <img class="profile" src="<%= partner.avatar %>">
-      <h1> my wine lists</h1>
+      <h1>Wine Lists</h1>
     </header>
 
     <form id="create-wineList" action="/wineLists" method="POST">
@@ -25,6 +24,8 @@
     <tr>
         <th>Wine List:</th>
         <td><%= wineList.name %></td>
+        <th>Created By:</th>
+        <td><%= wineList.createdBy.name %></td>
         <th>Created:</th>
         <td><%= wineList.createdAt.toLocaleDateString() %></td>
         <td>
@@ -33,9 +34,11 @@
           </form>
         </td>
         <td>
+            <% if (wineList.createdBy._id.toString() == partner.id.toString()) { %>
           <form action="/wineLists/<%= wineList._id %>?_method=DELETE" class="delete-wine-list" method="POST">
             <button type="submit"><i class="fas fa-trash-alt"></i></button>
-          </form>               
+          </form>    
+          <% } %>           
         </td>
     </tr>
     <% }); %>

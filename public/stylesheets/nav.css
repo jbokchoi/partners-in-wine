@@ -1,3 +1,7 @@
+:root {
+    --mainColor: #c499ae;
+  }
+
 nav {
     display: flex;
     height: 12vh;
@@ -18,7 +22,9 @@ nav {
 }
 
 #icon-wrap {
+    width: 60vw;
     display: flex;
+    justify-content: space-around;
     align-items: baseline;
 }
 
@@ -34,6 +40,21 @@ nav {
     font-size: calc(8px + 1vw);
     text-decoration: none;
     padding: 0 0 0 1vw;
+    background:
+    linear-gradient(
+      to right,
+      var(--mainColor) 0%,
+      var(--mainColor) 5px,
+      transparent 5px
+    );
+        background-repeat: repeat-x;
+        background-size: 100%;
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+a:hover {
+    background-size: 4px 50px;
 }
 
 #show {
@@ -63,3 +84,6 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+  
+  

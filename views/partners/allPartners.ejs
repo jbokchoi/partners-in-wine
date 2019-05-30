@@ -3,35 +3,23 @@
 <%- include('../partials/head') %>
 
 <body>
-    <%- include('../partials/nav') %>
-    <div class="container">
-            <div id="search-row" class="row">
-              <h2>Partners in Wine</h2>
-              <form action="/partners" method="GET">
-                <div>
-                  <div class="input-field">
-                    <input id="search" type="search" name="name" placeholder="search name" value="<%= name %>" autocomplete="off">
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="row">
-              <div id="partners">
-                <% partners.forEach(function(partner) { %>
-                  <div class="card blue-grey">
-                    <div class="card-content">
-                      <div>
-                        <span class="card-title">
-                          <% if (partner.avatar) { %><img class= "profile" src='<%= partner.avatar %>'>
-                          <% } else { %> <i class="small material-icons">perm_identity</i> <% } %>
-                          <span class="partner-name"><%= partner.name %></span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                <% }) %>
-              </div>
-            </div>
-            <%- include('../partials/footer') %>
-    </body> 
+  <%- include('../partials/nav') %>
+  <section class="all-partners-wrapper">
+    <br>
+    <div class="partner-info">
+      <% partner.forEach(function(partner) { %>
+      <div id="polaroid">
+          <form id="add-wine-to-list" action="/partners/<%= partner._id%>/addFriend" method="POST">
+            <input type="hidden" value="<%= partner._id %>" name="friends">
+            <button type="submit">Add Friend</button>
+          </form>
+        <p><%= partner.name %> is currently drinking... <%= partner.currentDrink %></p>
+        <img class="profile" src="<%= partner.avatar %>" alt="User Profile">
+      </div>
+      <% }) %>
+    </div>
+  </section>
+  <%- include('../partials/footer') %>
+</body>
+
 </html>

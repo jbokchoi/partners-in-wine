@@ -11,25 +11,52 @@ body {
     min-width: 100vw;
 }
 
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 75vh;
+    background-color:#e8e5e5;
+}
+
+#polaroid {
+    position: relative;
+    transform: rotate(2deg);
+    width: 220px;
+}
+
+#polaroid {
+    border: 10px solid #ffffff;
+    border-bottom: 45px solid #ffffff;
+    -webkit-box-shadow: 5px 5px px #777;
+    -moz-box-shadow: 5px 5px 5px #777;
+         box-shadow: 5px 5px 5px #777;
+}
+
+#polaroid p {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: -35px;
+    color: #4F0A29;
+    font-size: calc(14px + 0.5vw);
+    font-family: 'Raleway', sans-serif;
+  }
+
 .profile {
-    height: 18vh;
-    border-radius: 50%;
-    margin: 1vmax;
+    height: 200px;
+    width: 200px;
 }
 
 #profile {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     padding: 2vmax;
-    align-items: baseline;
+    align-items: center;
+    margin: 3vmax;
 }
 
-#pic-name {
-    display: flex;
-    align-items: baseline;
-}
-
-#pic-name > h1 {
+h1 {
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: calc(24px + 1vw);
@@ -41,44 +68,75 @@ body {
     display: flex;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
-    font-size: 3vmax;
+    font-size: calc(20px + 1vw);
+    line-height: calc(40px + 1.5vw);
     align-items: baseline;
 }
 
 .fa-edit {
     color: #4F0A29;
+    font-size: calc(20px + 1vw);
 }
 
 .dashboard {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-        "friends friends"
-        "latest my-wines";
+        "my-wines"
+        "friends";
+    grid-gap: 3vmax;
 }
 
-.dashboard > div > p {
-    margin: 1vmax;
+#profile > form {
+    display: flex;
+    justify-content: center;
+}
+
+#profile > form > button {
     color: #4F0A29;
-    font-family: 'Raleway', sans-serif;
+    font-size: calc(10px + 1vw);
 }
 
-.friends, .added-wines, .my-wine-lists {
-    border: 3px solid  #4F0A29;
-    margin: 1vmax;
-    border-radius: 5px;
+#profile > form > input {
+    border: 5px solid #e8e5e5; 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+    font-size: calc(12px + 1vw);
+    font-family: 'Raleway', sans-serif;
+    color: #4F0A29;
 }
 
 .friends {
     grid-area: friends;
-    height: 15vh;
-}
-
-.added-wines {
-    grid-area: latest;
+    padding: 2vmax;
 }
 
 .my-wine-lists {
     grid-area: my-wines;
+    padding: 2vmax;
+}
+
+#list > a {
+    display: flex;
+    justify-content: baseline;
+    margin: 0 0 0 20px;
+}
+
+#list > a > img {
+    height: calc(20px + 1vw);
+    margin: 0 10px 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #4F0A29;
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(20px + 1vw);
+}
+
+.all-partners.wrapper{
+    display: flex;
+    flex-wrap: wrap;
 }

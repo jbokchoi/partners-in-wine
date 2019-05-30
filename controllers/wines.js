@@ -3,7 +3,6 @@ var Partner = require('../models/partner');
 
 module.exports = {
     index,
-    new: newWine,
     create,
     show,
     delete: deleteWine,
@@ -56,9 +55,6 @@ function create(req, res, next) {
     });
 }
 
-function newWine(req, res, next) {
-    res.render('wines/new');
-}
 
 function index (req, res, next) {
     var sort = {};
@@ -66,6 +62,6 @@ function index (req, res, next) {
     var sortDir = req.query.sortDir;
     sort[sortBy] = 1 * sortDir;
     Wine.find({}).sort(sort).exec(function (err, wines) {
-        res.render('wines/index', { wines });
+        res.render('wines/index', { wines, partner: req.user });
     });
 }

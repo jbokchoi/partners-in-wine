@@ -9,7 +9,7 @@ var partnerSchema = new Schema({
     googleId: String,
     currentDrink: {type: String, default: "wine"},
     wineLists: [{type: Schema.Types.ObjectId, ref: 'WineList'}],
-    friends: [], 
+    friends: [{type: Schema.Types.ObjectId, ref: 'Partner'}], 
 }, {
     timestamps: true
 });

@@ -1,82 +1,97 @@
 <!DOCTYPE html>
 <html>
-    <%- include('../partials/head') %>
-  <body>
-    <%- include('../partials/nav') %>
-    <section id="wine-cat-show">
+<%- include('../partials/head') %>
+
+<body>
+  <%- include('../partials/nav') %>
+  <section id="wine-cat-show">
     <div id="show-wine-details">
-            <table id="show-wine">
-                    <tr>
-                        <th id="header" colspan="2"><%= wine.name %> Details</th>
-                    </tr>
-                    <tr>
-                        <th>Wine Name:</th>
-                        <td><%= wine.name %></td>
-                    </tr>
-                    <tr>
-                        <th>Style:</th>
-                        <td><%= wine.style %></td>
-                    </tr>
-                    <tr>
-                        <th>Sweetness:</th>
-                        <td><%= wine.sweetness %></td>
-                    </tr>
-                    <tr>
-                        <th>Type:</th>
-                        <td><%= wine.type %></td>
-                    </tr>
-                    <tr>
-                        <th>Country:</th>
-                        <td><%= wine.country %></td>
-                    </tr>
-                    <tr>
-                        <th>Wine added by:</th>
-                        <td><%= wine.addedBy.name  %></td>
-                    </tr>
-                </table>
-    </div>
-    <button class="edit-wine" onclick="location.href='/wines/<%= wine._id %>/edit'"> Edit this wine </button>
-    
-    <% if (wine.reviews.length) { %>
-      <table>
+      <table id="show-wine">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Review</th>
-            <th>Rating</th>
-            <th>Reviewed By</th>
+            <td id="header" colspan="2"><%= wine.name %> Details
+              <% if (wine.addedBy._id.toString() == partner.id.toString()) { %>
+                <button class="edit-wine" onclick="location.href='/wines/<%= wine._id %>/edit'"><i class="far fa-edit"></i></button>
+                <% } %>
+              </td>
           </tr>
         </thead>
         <tbody>
-          <% var total = 0 %>
-          <% wine.reviews.forEach(function(review) { %>
-            <% total += review.rating %>
-            <tr>
-              <td><%= review.createdAt.toLocaleDateString() %></td>
-              <td><%= review.content %></td>
-              <td><%= review.rating %></td>
-              <td><%= review.reviewedBy.name %></td>
-              <td><form action="/<%= wine._id %>/<%= review._id %>?_method=DELETE" class="delete-review"
-                method="POST">
-                <button type="submit">X</button></form></td>
-            </tr>
-            <% }); %>
-            <tr>
-              <td colspan="2"></td>
-              <td><strong><%= (total / wine.reviews.length).toFixed(1) %></strong></td>
-            </tr>
+          </tr>
+          <tr>
+            <th>Wine Name:</th>
+            <td><%= wine.name %></td>
+          </tr>
+          <tr>
+            <th>Style:</th>
+            <td><%= wine.style %></td>
+          </tr>
+          <tr>
+            <th>Sweetness:</th>
+            <td><%= wine.sweetness %></td>
+          </tr>
+          <tr>
+            <th>Type:</th>
+            <td><%= wine.type %></td>
+          </tr>
+          <tr>
+            <th>Country:</th>
+            <td><%= wine.country %></td>
+          </tr>
+          <tr>
+            <th>Wine added by:</th>
+            <td><%= wine.addedBy.name  %></td>
+          </tr>
         </tbody>
       </table>
+    </div>
+
+    <h1>Reviews</h1>
+    <% if (wine.reviews.length) { %>
+    <table id="reviews">
+      <thead>
+        <tr>
+          <td>Date</td>
+          <td>Review</td>
+          <td>Rating</td>
+          <td colspan="2">Reviewed By</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% var total = 0 %>
+        <% wine.reviews.forEach(function(review) { %>
+        <% total += review.rating %>
+        <tr>
+          <td><%= review.createdAt.toLocaleDateString() %></td>
+          <td><%= review.content %></td>
+          <td><%= review.rating %></td>
+          <td><%= review.reviewedBy.name %></td>
+          <td>
+            <% if (review.reviewedBy._id.toString() == partner.id.toString()) { %>
+            <form action="/<%= wine._id %>/<%= review._id %>?_method=DELETE" class="delete-review" method="POST">
+              <button type="submit"><i class="fas fa-trash-alt"></i></button></form>
+            <% } %>
+          </td>
+        </tr>
+        <% }); %>
+        <tr>
+          <td></td>
+          <td id="score" >total rating score:</td>
+          <td><strong><%= (total / wine.reviews.length).toFixed(1) %></strong></td>
+          <td colspan="2"></td>
+        </tr>
+      </tbody>
+    </table>
     <% } else { %>
-      <h5>No Reviews Yet</h5>
-    <% } %>    
-    
-    <h2>Reviews</h2>
-    <form id="add-review-form" method="POST"
-      action="/wines/<%= wine._id %>/reviews">
-      <label>Review:</label>
+    <h3>No Reviews Yet</h3>
+    <% } %>
+
+    <br><h3>Add a new review</h3>
+    <form id="add-review-form" method="POST" action="/wines/<%= wine._id %>/reviews">
+      <label>Review:      </label>
       <textarea name="content"></textarea>
-      <label>Rating:</label>
+
+      <label>Rating:     </label>
       <select name="rating">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -84,10 +99,12 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+ 
       <input type="hidden" value="<%= partner.id  %>" name="reviewedBy">
-      <input type="submit" value="Add Review">
+      <input class="add" type="submit" value="Add Review">
     </form>
   </section>
-    <%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>
 </body>
+
 </html>

@@ -6,31 +6,71 @@
   <%- include('../partials/nav') %>
   <section id="wine-cat-show">
     <header class="wine-header">
-      <h1> my wine list</h1>
-    </header>
+      <h1> Wine List: <%= wineList.name %> </h1>
+      <img class="profile-on-list" src="<%= wineList.createdBy.avatar %>" alt="User Profile">
+      <h3> created by: <%= wineList.createdBy.name %></h3>
+    </header><br>
 
-    <table id="show-wine-list">
-            <tr>
-                <th id="header" colspan="2">Wine List: <%= wineList.name %></th>
-            </tr>
-            <tr>
-                <th>About the <%= wineList.name %>:</th>
-                <td><%= wineList.description %></td>
-            </tr>
-            <tr>
-                <th>Wines:</th>
-                <td><%= wineList.wines.name %></td>
-            </tr>
-    </table>        
-
-
-    <form id="add-wine-to-list" action="/wineLists/<%= wineList._id%>/wines" method="POST">
+    <% if (wineList.createdBy._id.toString() == partner.id.toString()) { %>    
+    <div id="add-wines">
+      <h3>Add wines to your wine list</h3><br>
+      <form id="add-wine-to-list" action="/wineLists/<%= wineList._id%>/wines" method="POST">
         <select name="wineId">
           <%- wines.map(wine => `<option value="${wine._id}">${wine.name}</option>`).join('') %>
         </select>
         <button type="submit">Add to Wine List</button>
       </form>
+    </div>
+    <% } %>
+    <br>
+    <table >
+      <thead>
+        <tr> 
+          <td> About this wine list: </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <%= wineList.description %> </td>
+        </tr>
+      </tbody>
+    </table>        
 
+    <table id="show-wine-list">
+      <thead>
+          <tr>
+              <td>wine name</td>
+              <td>style </td>
+              <td>sweetness </td>
+              <td>type</td>
+              <td colspan="3">country </td>
+          </tr>
+      </thead>
+      <tbody>
+          <% wineList.wines.forEach(function(wine) {%>
+          <tr> 
+              <td><%= wine.name %></td>
+              <td><%= wine.style %></td>
+              <td><%= wine.sweetness %></td>
+              <td><%= wine.type %></td>
+              <td><%= wine.country %></td>
+              <td>
+                  <form action="/wines/<%= wine._id %>" class="show-wine" method="GET">
+                      <button type="submit"><img id="show" src="../images/show.png"></button>
+                  </form>     
+              </td>
+              <td>
+                  <% if (wineList.createdBy._id.toString() == partner.id.toString()) { %>
+                  <form action="/wineLists/<%= wineList._id %>/<%= wine._id %>?_method=DELETE" class="delete-wine" method="POST">
+                    <input name="wine" value="<%= wine._id %>" type="hidden">
+                      <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                  </form>             
+                  <% } %>  
+              </td>
+          </tr>
+          <% }) %>
+      </tbody>
+  </table>
 
 </section>
 <%- include('../partials/footer') %>
