@@ -30,20 +30,27 @@
       <div class="friends">
         <h1>my partners in wine</h1>
         <hr><br>
-        <% console.log(partner) %>
-        <p> <%= partner.friends %> </p>
+        <div id="friend-wrap">
+          <% friends.forEach(friend => { %>
+            <div id="friend-profile">
+              <img id="friends" src="<%= friend.avatar %>" alt="User Profile">
+              <p> <%= friend.name %> </p>
+            </div>
+          <% }) %>
+        </div>
       </div>
+
       <div class="my-wine-lists">
         <h1>my wine lists</h1>
         <hr><br>
-        <% wineList.forEach(function(wineList) { %>
         <div id='list'>
+            <% wineList.forEach(function(wineList) { %>
           <a href="/wineLists/<%= wineList.id %>">
             <img src= "../images/winecat-icon-red.png">
             <%= wineList.name %>
           </a>
+          <% }) %>
         </div>
-        <% }) %>
       </div>
     </section>
     
