@@ -72,6 +72,10 @@ button {
 }
 
 footer {
+    flex-shrink: 0;
+}
+
+footer {
     background-color: #58595b;
     color: #e8e5e5;
     font-family: 'Raleway', sans-serif;
@@ -79,11 +83,14 @@ footer {
     font-size: calc(8px + 1vw);
     text-decoration: none;
     text-align: center;
-    height: 12vh;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-  
+   
   

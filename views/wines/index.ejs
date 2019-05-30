@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+    <head>
 <%- include('../partials/head') %>
-
+<link rel='stylesheet' href='/stylesheets/wine.css' />
+</head>
 <body>
     <%- include('../partials/nav') %>
-    <section id="wine-cat-show">
+    <section class="wine-wrapper">
+        <section class="main">
         <header class="wine-header">
             <h1>Wine Catalogue</h1>
         </header>
@@ -99,6 +102,7 @@
         </div>
     </section>
     <%- include('../partials/footer') %>
+    </section>
 </body>
 
 </html>

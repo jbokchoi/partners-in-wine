@@ -7,15 +7,21 @@ margin: 0;
 }
 
 body {
-    min-height: 100vh;
-    min-width: 100vw;
+    height: 100vh;
+    width: 100vw;
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 75vh;
-    background-color:#e8e5e5;
+    padding-bottom: 100px;
+}
+
+#polaroid-wrapper {
+    background-color: #e8e5e5;
+    width: 250px;
+    display:flex;
+    justify-content: center;
 }
 
 #polaroid {
@@ -26,10 +32,10 @@ body {
 
 #polaroid {
     border: 10px solid #ffffff;
-    border-bottom: 45px solid #ffffff;
-    -webkit-box-shadow: 5px 5px px #777;
-    -moz-box-shadow: 5px 5px 5px #777;
-         box-shadow: 5px 5px 5px #777;
+    border-bottom: 50px solid #ffffff;
+    -webkit-box-shadow: 5px 5px px #1b1b1b;
+    -moz-box-shadow: 5px 5px 5px #1b1b1b;
+         box-shadow: 5px 5px 5px #1b1b1b;
 }
 
 #polaroid p {
@@ -54,6 +60,7 @@ body {
     padding: 2vmax;
     align-items: center;
     margin: 3vmax;
+
 }
 
 h1 {
@@ -99,9 +106,9 @@ h1 {
 }
 
 #profile > form > input {
-    border: 5px solid #e8e5e5; 
+    border: none;
+    border-bottom: 5px solid #e8e5e5; 
     padding: 15px;
-    background: rgba(255,255,255,0.5);
     margin: 0 0 10px 0;
     font-size: calc(12px + 1vw);
     font-family: 'Raleway', sans-serif;

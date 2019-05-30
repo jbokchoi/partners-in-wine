@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
-<%- include('../partials/head') %>
-
+  <head>
+    <%- include('../partials/head') %>
+    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
+  </head>
 <body>
   <%- include('../partials/nav') %>
   <section class="wrapper">
 
     <section id="profile">
-      <div id="polaroid">
-        <p><%= partner.name %></p>
-        <img class="profile" src="<%= partner.avatar %>" alt="User Profile">
+      <div id="polaroid-wrapper">
+        <div id="polaroid">
+          <p><%= partner.name %></p>
+          <img class="profile" src="<%= partner.avatar %>" alt="User Profile">
+        </div>
       </div>
       
       <div id="update">
@@ -20,7 +24,6 @@
         <input type="text" name="currentDrink" placeholder="Update your drink">
         <button type="submit"><i class="far fa-edit"></i>Edit</button>
       </form>
-
     </section>
 
     <section class="dashboard">

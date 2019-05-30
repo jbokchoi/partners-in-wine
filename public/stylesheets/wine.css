@@ -11,13 +11,16 @@ body {
     min-width: 100vw;
 }
 
-#wine-cat-show {
+.wine-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 75vh;
-    background-color: #e8e5e5;
+    height: 100vh;
+}
+
+.main {
+    flex: auto;
 }
 
 #show-wine-details {
