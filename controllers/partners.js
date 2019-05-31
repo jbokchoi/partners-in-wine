@@ -58,9 +58,5 @@ function index(req, res, next) {
                     })
                 });
         });
-    } else {
-        Partner.find({}).exec(function (err, partners) {
-            res.render('partners/dashboard', { partners, loggedInPartner: null });
-        });
-    }
-}              
+    }                  
+}

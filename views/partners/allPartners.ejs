@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <%- include('../partials/head') %>
-    <link rel='stylesheet' href='/stylesheets/dashboard.css' />
-    <link rel='stylesheet' href='/stylesheets/wine.css' />
-  </head>
+<%- include('../partials/head') %>
+<link rel='stylesheet' href='/stylesheets/friends.css' />
+</head>
 
 <body>
   <%- include('../partials/nav') %>
-  <section class="all-partners-wrapper">
+  <section class="wrapper">
     <br>
     <div class="partner-info">
-      <% partner.forEach(function(partner) { %>
-      <div id="polaroid">
-          <form id="add-wine-to-list" action="/partners/<%= partner._id%>/addFriend" method="POST">
-            <input type="hidden" value="<%= partner._id %>" name="friends">
-            <button type="submit">Add Friend</button>
-          </form>
-        <p><%= partner.name %> is currently drinking... <%= partner.currentDrink %></p>
-        <img class="profile" src="<%= partner.avatar %>" alt="User Profile">
-      </div>
-      <% }) %>
+      <table class="partner-info">
+        <% partner.forEach(function(partner) { %>
+          <tbody>
+        <tr>
+          <td>
+            <img class="profile" src="<%= partner.avatar %>" alt="User Profile">
+          </td>
+          <td colspan="3">
+            <p><%= partner.name %> is currently drinking... <%= partner.currentDrink %></p>
+          </td>
+          <td>
+            <form id="add-wine-to-list" action="/partners/<%= partner._id%>/addFriend" method="POST">
+              <input type="hidden" value="<%= partner._id %>" name="friends">
+              <button type="submit">Add Friend</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+        <% }) %>
+      </table>
+
     </div>
   </section>
   <%- include('../partials/footer') %>

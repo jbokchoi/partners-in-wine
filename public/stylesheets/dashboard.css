@@ -6,15 +6,29 @@
 margin: 0;
 }
 
+/*  body css */
+
 body {
     height: 100vh;
-    width: 100vw;
+    min-width: 100vw;
 }
 
 .wrapper {
+    width: 100vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-bottom: 100px;
+}
+
+/* profile css */
+
+#profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2vmax;
+    align-items: center;
+    margin: 3vmax;
 }
 
 #polaroid-wrapper {
@@ -53,24 +67,6 @@ body {
     width: 200px;
 }
 
-#profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 2vmax;
-    align-items: center;
-    margin: 3vmax;
-
-}
-
-h1 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    font-size: calc(24px + 1vw);
-    line-height: calc(40px + 1.5vw);
-    color: #4F0A29;
-}
-
 #update {
     display: flex;
     font-family: 'Raleway', sans-serif;
@@ -79,26 +75,17 @@ h1 {
     line-height: calc(40px + 1.5vw);
     align-items: baseline;
     margin-top: 2vh;
-}
-
-.fa-edit {
     color: #4F0A29;
-    font-size: calc(20px + 1vw);
-}
-
-.dashboard {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-        "my-wines"
-        "friends";
-    grid-gap: 3vmax;
 }
 
 #profile > form {
     display: flex;
     justify-content: center;
+}
+
+.fa-edit {
+    color: #4F0A29;
+    font-size: calc(20px + 1vw);
 }
 
 #profile > form > button {
@@ -116,13 +103,35 @@ h1 {
     color: #4F0A29;
 }
 
-.friends {
-    grid-area: friends;
-    padding: 2vmax;
+/* typography styles */
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: calc(24px + 1vw);
+    line-height: calc(40px + 1.5vw);
+    color: #4F0A29;
+}
+
+/* dashboard css */
+
+.dashboard {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "my-wines"
+        "friends";
+    grid-gap: 3vmax;
 }
 
 .my-wine-lists {
     grid-area: my-wines;
+    padding: 2vmax;
+}
+
+.friends {
+    grid-area: friends;
     padding: 2vmax;
 }
 
@@ -144,16 +153,11 @@ a {
     font-size: calc(20px + 1vw);
 }
 
-.all-partners-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-}
-
 #friends {
     height: 10vmin;
     width: 10vmin;
     border-radius: 50%;
-    overflow: auto;
+    overflow-x: auto;
 }
 
 #friend-profile {
@@ -161,6 +165,11 @@ a {
     flex-direction: column;
     align-items: center;
     margin: 1vw;
+    color: #4F0A29;
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(8px + 1vw);
+    text-align: center;
+
 }
 
 #friend-profile > p {
@@ -169,4 +178,16 @@ a {
 
 #friend-wrap {
     display: flex;
+    width: 40vw;
+    overflow-y: auto;
+}
+
+/* all partners page css */
+
+.all-partners-wrapper{
+    
+}
+
+#partner-info {
+    display: flex;;
 }

@@ -1,15 +1,25 @@
+/* nav css */
 :root {
     --mainColor: #c499ae;
   }
 
 nav {
     display: flex;
+    width: 100vw;
     height: 12vh;
     background-color: #4F0A29;
     justify-content: space-between;
     align-items: center;
     padding: 1vmax;
 }
+
+#icon-wrap {
+    width: 60vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
 
 #nav-title {
     color: #e8e5e5;
@@ -21,25 +31,13 @@ nav {
     text-decoration: none;
 }
 
-#icon-wrap {
-    width: 60vw;
-    display: flex;
-    justify-content: space-around;
-    align-items: baseline;
-}
-
-.icon {
-    height: 3vh;
-    padding: 0 1vw 0 0;
-}
-
 .nav {
     color: #e8e5e5;
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: calc(8px + 1vw);
     text-decoration: none;
-    padding: 0 0 0 1vw;
+    padding: 0 0 0 2vw;
     background:
     linear-gradient(
       to right,
@@ -50,11 +48,15 @@ nav {
         background-repeat: repeat-x;
         background-size: 100%;
     padding-left: 10px;
-    text-decoration: none;
 }
 
 a:hover {
     background-size: 4px 50px;
+}
+
+.icon {
+    height: 2.5vmax;
+    padding: 0 1vw 0 0;
 }
 
 #show {
@@ -71,19 +73,23 @@ button {
     font-size: 15px;
 }
 
+
+/* footer */
+
 footer {
     flex-shrink: 0;
 }
 
 footer {
-    background-color: #58595b;
-    color: #e8e5e5;
+    background-color:  #e8e5e5;;
+    color: #58595b;
+    border-top: 2px solid #58595b; 
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: calc(8px + 1vw);
     text-decoration: none;
     text-align: center;
-    height: 100px;
+    height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;

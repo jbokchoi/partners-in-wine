@@ -2,16 +2,16 @@
 <html>
     <head>
         <%- include('../partials/head') %>
-        <link rel='stylesheet' href='/stylesheets/wine.css' />
+        <link rel='stylesheet' href='/stylesheets/wine-list.css'' />
         </head>
 <body>
   <%- include('../partials/nav') %>
-  <section id="wine-cat-show">
-    <header class="wine-header">
+  <section class="wine-wrapper">      
+    <br>
       <h1> Wine List: <%= wineList.name %> </h1>
       <img class="profile-on-list" src="<%= wineList.createdBy.avatar %>" alt="User Profile">
-      <h3> created by: <%= wineList.createdBy.name %></h3>
-    </header><br>
+      <p> created by: <%= wineList.createdBy.name %></p>
+ <br>
 
     <% if (wineList.createdBy._id.toString() == partner.id.toString()) { %>    
     <div id="add-wines">
@@ -20,12 +20,12 @@
         <select name="wineId">
           <%- wines.map(wine => `<option value="${wine._id}">${wine.name}</option>`).join('') %>
         </select>
-        <button type="submit">Add to Wine List</button>
+        <button class="add" type="submit">Add to Wine List</button>
       </form>
     </div>
     <% } %>
     <br>
-    <table >
+    <table id="about">
       <thead>
         <tr> 
           <td> About this wine list: </td>
@@ -37,7 +37,7 @@
         </tr>
       </tbody>
     </table>        
-
+    
     <table id="show-wine-list">
       <thead>
           <tr>

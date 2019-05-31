@@ -6,6 +6,8 @@
 margin: 0;
 }
 
+/* body */
+
 body {
     min-height: 100vh;
     min-width: 100vw;
@@ -14,38 +16,31 @@ body {
 .wine-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
+    top: 10vh; 
+    right: auto;
+    left: auto;
+
 }
 
-.main {
-    flex: auto;
-}
+/* typography styles */
 
-#show-wine-details {
-    margin: 3vmax;
-}
-
-.wine-header {
-    line-height: 3vmax;
-    text-align: center;
-    margin-top: 3vmax;
-}
-
-.wine-header > h1 {
-    margin: 0;
+h1 {
     font-family: 'Raleway', sans-serif;
-    color: #58595b;
-    letter-spacing: 1px;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: calc(24px + 1vw);
+    line-height: calc(40px + 1.5vw);
+    color: #4F0A29;
 }
 
 #cat-table {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    height: 50vh;
+    height: 30vh;
 }
 
 table {
@@ -57,10 +52,6 @@ table {
 }
 
 #wine-catalogue > tbody tr:hover {
-    background: #c499ae;
-}
-
-#show-wine-list  > tbody tr:hover {
     background: #c499ae;
 }
 
@@ -103,7 +94,7 @@ tr:nth-child(even) {
     margin: 2vmax;
 }
 
-#add-wine, #add-review-form {
+#add-wine {
     align-items: center;
     font-family: 'Raleway', sans-serif;
     color: #58595b;
@@ -128,8 +119,17 @@ select {
     font-size: 14px;
 }
 
+#add-wine-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 60px;
+}
+
 #add-wine-wrapper > form {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -141,16 +141,6 @@ select {
 
 form > label {
     margin: 1vmax 0;
-}
-
-.edit-wine {
-    color: #4F0A29;
-    font-size: calc(10px + 1vw);
-}
-
-.fa-edit {
-    color: #e8e5e5;
-    font-size: calc(14px + 1vw);
 }
 
 h3 {

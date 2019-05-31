@@ -2,14 +2,13 @@
 <html>
     <head>
         <%- include('../partials/head') %>
-        <link rel='stylesheet' href='/stylesheets/wine.css' />
+        <link rel='stylesheet' href='/stylesheets/wine-list.css' />
         </head>
 <body>
   <%- include('../partials/nav') %>
-  <section id="wine-cat-show">
-    <header class="wine-header">
+  <section class ="wine-wrapper">
+
       <h1>Wine Lists</h1>
-    </header>
 
     <form id="create-wineList" action="/wineLists" method="POST">
       <label id="winelist-name"> Wine List Name: </label>
