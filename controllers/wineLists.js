@@ -7,11 +7,11 @@ module.exports = {
     create,
     show,
     addWinesToList,
-    delete: deleteWineList, 
+    delete: deleteWineList,
     deleteWineFromList
 };
 
-function deleteWineFromList (req, res, next) {
+function deleteWineFromList(req, res, next) {
     WineList.findById(req.params.id, function (err, wineList) {
         wineList.wines.remove(req.body.wine);
         wineList.save(function (err) {
@@ -55,7 +55,7 @@ function create(req, res, next) {
         Partner.find({}).exec(function (err) {
             wineList.createdBy = req.user;
             wineList.save(function (err) {
-                    res.redirect('/wineLists/index')
+                res.redirect('/wineLists/index')
             });
         });
     });

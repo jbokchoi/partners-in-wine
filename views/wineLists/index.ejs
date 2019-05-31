@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <%- include('../partials/head') %>
-        <link rel='stylesheet' href='/stylesheets/wine-list.css' />
-        </head>
+
+<head>
+  <%- include('../partials/head') %>
+  <link rel='stylesheet' href='/stylesheets/wine-list.css' />
+</head>
+
 <body>
   <%- include('../partials/nav') %>
-  <section class ="wine-wrapper">
+  <section class="wine-wrapper">
 
-      <h1>Wine Lists</h1>
+    <h1>Wine Lists</h1>
 
     <form id="create-wineList" action="/wineLists" method="POST">
       <label id="winelist-name"> Wine List Name: </label>
-        <input type="text" name="name">
-      
-      <label>Description: </label>
-        <textarea name="description"></textarea>
-      
-      <input class="add" type="submit" value="Create Wine List">
-  </form>    
+      <input type="text" name="name">
 
-  <table id="show-wine-list">
-    <% wineList.forEach(function(wineList) { %>
-    <tr>
+      <label>Description: </label>
+      <textarea name="description"></textarea>
+
+      <input class="add" type="submit" value="Create Wine List">
+    </form>
+
+    <table id="show-wine-list">
+      <% wineList.forEach(function(wineList) { %>
+      <tr>
         <th>Wine List:</th>
         <td><%= wineList.name %></td>
         <th>Created By:</th>
@@ -31,19 +33,19 @@
         <td><%= wineList.createdAt.toLocaleDateString() %></td>
         <td>
           <form action="/wineLists/<%= wineList._id %>" class="show-wine-list" method="GET">
-          <button type="submit"><img id="show" src="../images/show.png"></button>
+            <button type="submit"><img id="show" src="../images/show.png"></button>
           </form>
         </td>
         <td>
-            <% if (wineList.createdBy._id.toString() == partner.id.toString()) { %>
+          <% if (wineList.createdBy._id.toString() == partner.id.toString()) { %>
           <form action="/wineLists/<%= wineList._id %>?_method=DELETE" class="delete-wine-list" method="POST">
             <button type="submit"><i class="fas fa-trash-alt"></i></button>
-          </form>    
-          <% } %>           
+          </form>
+          <% } %>
         </td>
-    </tr>
-    <% }); %>
-  </table>
+      </tr>
+      <% }); %>
+    </table>
 
   </section>
   <%- include('../partials/footer') %>

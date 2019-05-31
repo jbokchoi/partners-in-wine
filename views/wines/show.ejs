@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <%- include('../partials/head') %>
-      <link rel='stylesheet' href='/stylesheets/wine-show.css' />
-    </head>
+
+<head>
+  <%- include('../partials/head') %>
+  <link rel='stylesheet' href='/stylesheets/wine-show.css' />
+</head>
+
 <body>
   <%- include('../partials/nav') %>
   <section id="wine-wrapper">
@@ -13,9 +15,10 @@
           <tr>
             <td id="header" colspan="2"><%= wine.name %> Details
               <% if (wine.addedBy._id.toString() == partner.id.toString()) { %>
-                <button class="edit-wine" onclick="location.href='/wines/<%= wine._id %>/edit'"><i class="far fa-edit"></i></button>
-                <% } %>
-              </td>
+              <button class="edit-wine" onclick="location.href='/wines/<%= wine._id %>/edit'"><i
+                  class="far fa-edit"></i></button>
+              <% } %>
+            </td>
           </tr>
         </thead>
         <tbody>
@@ -50,68 +53,69 @@
     </div>
 
     <div id="add-review">
-        <br><h3>Add a new review</h3>
-        <form id="add-review-form" method="POST" action="/wines/<%= wine._id %>/reviews">
-          <label>Review:      </label>
-          <textarea name="content"></textarea>
-    
-          <label>Rating:</label>
-          <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-     
-          <input type="hidden" value="<%= partner.id  %>" name="reviewedBy">
-          <input class="add" type="submit" value="Add Review">
-        </form>
-      </div>
+      <br>
+      <h3>Add a new review</h3>
+      <form id="add-review-form" method="POST" action="/wines/<%= wine._id %>/reviews">
+        <label>Review: </label>
+        <textarea name="content"></textarea>
+
+        <label>Rating:</label>
+        <select name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <input type="hidden" value="<%= partner.id  %>" name="reviewedBy">
+        <input class="add" type="submit" value="Add Review">
+      </form>
+    </div>
 
     <div id="reviews">
-    <h3>Reviews</h3>
-    <hr>
-    <div id="review-wrapper"></div>
-    <% if (wine.reviews.length) { %>
-    <table id="reviews">
-      <thead>
-        <tr>
-          <td>Date</td>
-          <td>Review</td>
-          <td>Rating</td>
-          <td colspan="2">Reviewed By</td>
-        </tr>
-      </thead>
-      <tbody>
-        <% var total = 0 %>
-        <% wine.reviews.forEach(function(review) { %>
-        <% total += review.rating %>
-        <tr>
-          <td><%= review.createdAt.toLocaleDateString() %></td>
-          <td><%= review.content %></td>
-          <td><%= review.rating %></td>
-          <td><%= review.reviewedBy.name %></td>
-          <td>
-            <% if (review.reviewedBy._id.toString() == partner.id.toString()) { %>
-            <form action="/<%= wine._id %>/<%= review._id %>?_method=DELETE" class="delete-review" method="POST">
-              <button type="submit"><i class="fas fa-trash-alt"></i></button></form>
-            <% } %>
-          </td>
-        </tr>
-        <% }); %>
-        <tr>
-          <td></td>
-          <td id="score" >total rating score:</td>
-          <td><strong><%= (total / wine.reviews.length).toFixed(1) %></strong></td>
-          <td colspan="2"></td>
-        </tr>
-      </tbody>
-    </table>
-    <% } else { %>
-    <p>No Reviews Yet</p>
-    <% } %>
-  </div>
+      <h3>Reviews</h3>
+      <hr>
+      <div id="review-wrapper"></div>
+      <% if (wine.reviews.length) { %>
+      <table id="reviews">
+        <thead>
+          <tr>
+            <td>Date</td>
+            <td>Review</td>
+            <td>Rating</td>
+            <td colspan="2">Reviewed By</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% var total = 0 %>
+          <% wine.reviews.forEach(function(review) { %>
+          <% total += review.rating %>
+          <tr>
+            <td><%= review.createdAt.toLocaleDateString() %></td>
+            <td><%= review.content %></td>
+            <td><%= review.rating %></td>
+            <td><%= review.reviewedBy.name %></td>
+            <td>
+              <% if (review.reviewedBy._id.toString() == partner.id.toString()) { %>
+              <form action="/<%= wine._id %>/<%= review._id %>?_method=DELETE" class="delete-review" method="POST">
+                <button type="submit"><i class="fas fa-trash-alt"></i></button></form>
+              <% } %>
+            </td>
+          </tr>
+          <% }); %>
+          <tr>
+            <td></td>
+            <td id="score">total rating score:</td>
+            <td><strong><%= (total / wine.reviews.length).toFixed(1) %></strong></td>
+            <td colspan="2"></td>
+          </tr>
+        </tbody>
+      </table>
+      <% } else { %>
+      <p>No Reviews Yet</p>
+      <% } %>
+    </div>
   </section>
   <%- include('../partials/footer') %>
 </body>

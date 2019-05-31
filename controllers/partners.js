@@ -50,7 +50,7 @@ function index(req, res, next) {
                                 return true;
                             }
                         })
-                        Partner.find({'_id': { $in: loggedInPartner.friends } })
+                        Partner.find({ '_id': { $in: loggedInPartner.friends } })
                             .exec(function (err, friends) {
                                 res.render('partners/myDashboard',
                                     { partner: req.user, friends, loggedInPartner, wineList });
@@ -58,5 +58,5 @@ function index(req, res, next) {
                     })
                 });
         });
-    }                  
+    }
 }

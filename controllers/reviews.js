@@ -7,9 +7,9 @@ module.exports = {
 };
 
 function deleteReview(req, res, next) {
-  Wine.findById(req.params.wineId, function(err, wine) {
+  Wine.findById(req.params.wineId, function (err, wine) {
     wine.reviews.id(req.params.reviewId).remove();
-    wine.save(function(err) {
+    wine.save(function (err) {
       res.redirect(`/wines/${wine._id}`)
     });
   });
